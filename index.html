@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Vendas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .chart-container {
+            margin-bottom: 2rem;
+        }
+
+        canvas {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Dashboard de Vendas</h1>
+        <p>Visualize os principais indicadores de vendas</p>
+    </header>
+
+    <div class="container">
+        <!-- Receita Mensal -->
+        <div class="chart-container">
+            <h2>Receita Mensal</h2>
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+        <!-- Receita por Categoria -->
+        <div class="chart-container">
+            <h2>Receita por Categoria</h2>
+            <canvas id="categoryChart"></canvas>
+        </div>
+
+        <!-- Receita por Região -->
+        <div class="chart-container">
+            <h2>Receita por Região</h2>
+            <canvas id="regionChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Receita Mensal
+        const revenueChart = new Chart(document.getElementById('revenueChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                datasets: [{
+                    label: 'Receita (R$)',
+                    data: [15000, 20000, 18000, 22000, 25000, 27000, 30000, 32000, 28000, 29000, 31000, 35000],
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    fill: true
+                }]
+            }
+        });
+
+        // Receita por Categoria
+        const categoryChart = new Chart(document.getElementById('categoryChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Eletrônicos', 'Roupas', 'Alimentos', 'Móveis', 'Beleza'],
+                datasets: [{
+                    label: 'Receita (R$)',
+                    data: [12000, 15000, 8000, 10000, 7000],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9F40']
+                }]
+            }
+        });
+
+        // Receita por Região
+        const regionChart = new Chart(document.getElementById('regionChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Norte', 'Sul', 'Leste', 'Oeste'],
+                datasets: [{
+                    data: [30000, 40000, 25000, 35000],
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50']
+                }]
+            }
+        });
+    </script>
+</body>
+
+</html>
